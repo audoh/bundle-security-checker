@@ -1,0 +1,20 @@
+# This file is part of kookas/bundle/security-checker.
+# 
+# (c) Ashleigh Udoh <mail@audoh.co.uk>
+# 
+# For the full copyright and license information, please view the LICENSE
+# file that was distributed with this source code.
+
+services:
+    kookas.security_checker:
+        class: Kookas\Bundle\SecurityCheckerBundle\Service\SecurityChecker
+        arguments: ['@security.authorization_checker', '@security.token_storage',
+                    '@security.role_hierarchy', '@security.authentication.trust_resolver',
+                    '@router', '@request_stack', '@sensio_framework_extra.security.expression_language']
+
+    kookas.security_checker.twig_extension:
+        class: Kookas\Bundle\SecurityCheckerBundle\Twig\SecurityChecker
+        arguments: ["@kookas.security_checker"]
+        public: false
+        tags:
+            - { name: twig.extension }

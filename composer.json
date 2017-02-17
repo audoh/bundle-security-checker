@@ -1,0 +1,21 @@
+{
+    "name": "kookas/bundle/security-checker",
+    "type": "library",
+    "description": "Check whether the user can access a route based on its @Security annotation.",
+    "keywords": ["authorization", "twig", "symfony"],
+    "license": "MIT",
+    "authors":
+    [
+        {
+            "name": "Ashleigh Udoh",
+            "email": "mail@audoh.co.uk"
+        }
+    ],
+    "autoload":
+    {
+        "psr-0" : 
+        {
+            "Kookas\\SecurityCheckerBundle" : "src"
+        }
+    }
+}
