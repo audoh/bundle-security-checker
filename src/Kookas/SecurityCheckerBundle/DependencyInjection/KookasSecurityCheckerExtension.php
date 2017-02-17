@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of kookas/bundle/security-checker.
+ * This file is part of kookas/security-checker.
  *
  * (c) Ashleigh Udoh <mail@audoh.co.uk>
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Kookas\Bundle\SecurityCheckerBundle\DependencyInjection;
+namespace Kookas\SecurityCheckerBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

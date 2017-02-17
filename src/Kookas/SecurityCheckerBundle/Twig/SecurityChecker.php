@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of kookas/bundle/security-checker.
+ * This file is part of kookas/security-checker.
  *
  * (c) Ashleigh Udoh <mail@audoh.co.uk>
  *
@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Kookas\Bundle\SecurityCheckerBundle\Twig;
+namespace Kookas\SecurityCheckerBundle\Twig;
 
-use Kookas\Bundle\SecurityCheckerBundle\Service\SecurityChecker;
+use Kookas\SecurityCheckerBundle\Service\SecurityChecker;
 use Twig_Extension,
 	Twig_SimpleFunction;
 

@@ -1,5 +1,5 @@
 {
-    "name": "kookas/bundle/security-checker",
+    "name": "kookas/security-checker",
     "type": "library",
     "description": "Check whether the user can access a route based on its @Security annotation.",
     "keywords": ["authorization", "twig", "symfony"],

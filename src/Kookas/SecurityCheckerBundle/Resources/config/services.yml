@@ -1,4 +1,4 @@
-# This file is part of kookas/bundle/security-checker.
+# This file is part of kookas/security-checker.
 # 
 # (c) Ashleigh Udoh <mail@audoh.co.uk>
 # 
@@ -7,13 +7,13 @@
 
 services:
     kookas.security_checker:
-        class: Kookas\Bundle\SecurityCheckerBundle\Service\SecurityChecker
+        class: Kookas\SecurityCheckerBundle\Service\SecurityChecker
         arguments: ['@security.authorization_checker', '@security.token_storage',
                     '@security.role_hierarchy', '@security.authentication.trust_resolver',
                     '@router', '@request_stack', '@sensio_framework_extra.security.expression_language']
 
     kookas.security_checker.twig_extension:
-        class: Kookas\Bundle\SecurityCheckerBundle\Twig\SecurityChecker
+        class: Kookas\SecurityCheckerBundle\Twig\SecurityChecker
         arguments: ["@kookas.security_checker"]
         public: false
         tags:
