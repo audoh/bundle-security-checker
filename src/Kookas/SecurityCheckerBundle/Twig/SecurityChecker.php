@@ -11,7 +11,7 @@
 
 namespace Kookas\SecurityCheckerBundle\Twig;
 
-use Kookas\SecurityCheckerBundle\Service\SecurityChecker;
+use Kookas\SecurityCheckerBundle\Service\SecurityCheckerService;
 use Twig_Extension,
 	Twig_SimpleFunction;
 
@@ -19,7 +19,7 @@ class SecurityChecker extends Twig_Extension
 {
 	private $authTester;
 
-	public function __construct(SecurityChecker $authTester)
+	public function __construct(SecurityCheckerService $authTester)
     {
         $this->authTester = $authTester;
     }

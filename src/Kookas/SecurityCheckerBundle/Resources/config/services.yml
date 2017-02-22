@@ -7,7 +7,7 @@
 
 services:
     kookas.security_checker:
-        class: Kookas\SecurityCheckerBundle\Service\SecurityChecker
+        class: Kookas\SecurityCheckerBundle\Service\SecurityCheckerService
         arguments: ['@security.authorization_checker', '@security.token_storage',
                     '@security.role_hierarchy', '@security.authentication.trust_resolver',
                     '@router', '@request_stack', '@sensio_framework_extra.security.expression_language']

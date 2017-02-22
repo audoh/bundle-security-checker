@@ -25,7 +25,7 @@ use ReflectionMethod;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
-class SecurityChecker
+class SecurityCheckerService
 {
 	private $authChecker;
 	private $tokenStorage;
