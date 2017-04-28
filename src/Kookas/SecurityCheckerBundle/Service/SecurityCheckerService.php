@@ -21,7 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Request;
 
-use ReflectionMethod;
+use ReflectionMethod, ReflectionClass;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
@@ -59,37 +59,44 @@ class SecurityCheckerService
 
 		list($class, $method) = explode('::', $method);
 
+		// Get class annotations.
+
+		$reflectionClass = new ReflectionClass($class);
+		$classAnnotations = $this->reader->getClassAnnotations($reflectionClass);
+
 		// Get method annotations.
 
 		$reflectionMethod = new ReflectionMethod($class, $method);
 		$actionAnnotations = $this->reader->getMethodAnnotations($reflectionMethod);
 
-		// Find the security annotation.
+		// Find matching security annotations.
 
-		$securityAnnotation = null;
+		$classExpr = 'true';
+		$actionExpr = 'true';
+
+		foreach($classAnnotations as $annotation)
+		{
+			if($annotation instanceof Security)
+			{
+				$classExpr = $annotation->getExpression();
+				break;
+			}
+		}
 
 		foreach($actionAnnotations as $annotation)
 		{
 			if($annotation instanceof Security)
 			{
-				$securityAnnotation = $annotation;
+				$actionExpr = $annotation->getExpression();
 				break;
 			}
-
 		}
-
-		// If not found, assume true.
-
-		if(!$securityAnnotation)
-			return true;
-
-		// Get security expression.
-
-		$expression = $securityAnnotation->getExpression();
 
 		// Evaluate expression via AuthorizationChecker.
 
-		return $this->language->evaluate($expression, $this->getVariables($routeParams));
+		$vars = $this->getVariables($routeParams);
+
+		return $this->language->evaluate($classExpr, $vars) && $this->language->evaluate($actionExpr, $vars);
 	}
 
 	public function getVariables($routeParams)
