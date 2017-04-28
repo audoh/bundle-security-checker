@@ -32,7 +32,7 @@ class SecurityChecker extends Twig_Extension
     	];
     }
 
-    public function canAccess($routeName, $routeParams)
+    public function canAccess($routeName, $routeParams = [])
     {
     	return $this->authTester->canAccess($routeName, $routeParams);
     }
